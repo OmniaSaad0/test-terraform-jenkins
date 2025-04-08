@@ -22,7 +22,7 @@ pipeline {
                         echo "Terraform not found, installing..."
                         apt-get install wget unzip -y
                         wget https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
-                        unzip terraform.zip
+                        unzip terraform_1.7.5_linux_amd64.zip
                         mv terraform /usr/local/bin/
                     else
                         echo "Terraform already installed"
