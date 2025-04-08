@@ -12,7 +12,7 @@ pipeline {
                 checkout scm
             }
         }
-    }
+    
 
         stage('Terraform Init') {
             steps {
@@ -46,7 +46,6 @@ pipeline {
             }
         }
     }
-    }
 
     post {
         success {
@@ -56,4 +55,5 @@ pipeline {
                slackSend color: "good" , message: "AWS provisioning with Terraform failed."
         }
     }
+    
 }
