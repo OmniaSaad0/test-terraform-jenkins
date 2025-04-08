@@ -13,25 +13,6 @@ pipeline {
             }
         }
 
-        stage('Install Terraform') {
-            steps {
-                script {
-                    sh '''
-                    if ! command -v terraform &> /dev/null
-                    then
-                        echo "Terraform not found, installing..."
-                        apt-get install wget unzip -y
-                        wget https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
-                        unzip terraform_1.7.5_linux_amd64.zip
-                        mv terraform /usr/local/bin/
-                    else
-                        echo "Terraform already installed"
-                    fi
-                    '''
-                }
-            }
-        }
-
         stage('Terraform Init') {
             steps {
                 script {
@@ -55,6 +36,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Terraform Destroy') {
+            steps {
+                script {
+                    sh 'terraform destroy -auto-approve'
+                }
+            }
+        }
+    }
     }
 
     post {
