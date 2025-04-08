@@ -58,14 +58,11 @@ pipeline {
     }
 
     post {
-        always {
-            cleanWs()
-        }
         success {
-            echo 'AWS provisioning with Terraform was successful!'
+               slackSend color: "good" , message: "AWS provisioning with Terraform was successful!"
         }
         failure {
-            echo 'AWS provisioning with Terraform failed.'
+               slackSend color: "good" , message: "AWS provisioning with Terraform failed."
         }
     }
 }
