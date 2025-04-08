@@ -12,6 +12,7 @@ pipeline {
                 checkout scm
             }
         }
+    }
 
         stage('Terraform Init') {
             steps {
