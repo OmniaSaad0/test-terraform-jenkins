@@ -1,19 +1,19 @@
-variable "project_name" {
-  description = "Project name to tag resources"
-  type        = string
-}
-
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
 }
 
-variable "subnets" {
-  description = "Map of public and private subnets"
-  type = map(object({
-    cidr_block        = string
-    availability_zone = string
-    type              = string  
-  }))
+variable "region" {
+  type = string
+}
+
+variable "public_subnets" {
+  type = list(string)
+  description = "List of CIDR blocks for public subnets"
+}
+
+variable "private_subnets" {
+  type = list(string)
+  description = "List of CIDR blocks for private subnets"
 }
 
