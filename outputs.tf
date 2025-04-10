@@ -13,3 +13,8 @@ output "redis_hostname" {
 output "redis_port" {
   value = aws_elasticache_cluster.redis.port
 }
+
+output "lb_dns_name" {
+  value = aws_lb.app_lb.dns_name
+  description = "The DNS name of the load balancer"
+}
